@@ -132,9 +132,9 @@ tracker = Tracker(tracker_type = 'sort')
 ...
 
 # update SORT
-track_bbs_ids = tracker.update(detections)
+track_bbs_conf_cls_ids = tracker(detections)
 
-# track_bbs_ids is a np array where each row contains a valid bounding box, score, class and track_id (last column)
+# track_bbs_conf_cls_ids is a np array where each row contains a valid bounding box, score, class and track_id (last column)
 ...
 ```
 
