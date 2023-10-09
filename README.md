@@ -14,8 +14,10 @@ The modified version of sort tracking (https://github.com/abewley/sort) compatib
 <details open>
 <summary>Install</summary>
 Clone repo and install [requirements.txt](requirements.txt)
+
 ```bash
 git clone https://github.com/amish0/Sort_tracking
 cd Sort_tracking
 pip install -r requirements.txt
 ```
+</details>
