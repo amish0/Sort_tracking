@@ -1,6 +1,6 @@
 # Sort_tracking
 The modified version of sort tracking (https://github.com/abewley/sort) compatible with the Yolo Series
-## Directory structure
+## Files
 - [sort_cls.py](Sort_cls.py): The main file of the sort tracking with modification. sort will will be initialized with `max_age`, `min_hits`, `iou_threshold` based on arguments. `update` method will with the detections parameters and return the tracking results.
     - arguments:
         - dets - a numpy array of detections in the format [[x1,y1,x2,y2,score, cls],[x1,y1,x2,y2,score, cls],...]
@@ -10,3 +10,12 @@ The modified version of sort tracking (https://github.com/abewley/sort) compatib
 - [utils.py](utils.py): conatins the functions `check_file()`: for checking file existence and `check_suffix()`: suffix of the file
 - [loadyaml.py](loadyaml.py): contains the function `loadyaml()`: for loading the yaml file
 - [tracker.py](tracker.py): main tracking file. It will load the sort_cls.py and use the update method to get the tracking results. please check class `Tracker` and `MuliCameraTracker` for more details.
+
+<details open>
+<summary>Install</summary>
+Clone repo and install [requirements.txt](requirements.txt)
+```bash
+git clone https://github.com/amish0/Sort_tracking
+cd Sort_tracking
+pip install -r requirements.txt
+```
