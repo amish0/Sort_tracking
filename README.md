@@ -24,7 +24,7 @@ pip install -r requirements.txt
 
 <details open>
 <summary>Usage</summary>
-- Sort tracking can be used with the following command
+<summary>Sort tracking can be used as a standalone tracker.</summary>
 
 ```bash
 from Sort_cls import Sort
@@ -34,4 +34,27 @@ dets = np.array([[0,0,10,10,0.9,1],[0,0,10,10,0.8,1],[0,0,10,10,0.7,1], ....])
 tracking_results = obj_tracker.update(dets)
 print(tracking_results)
 ```
+
+<summary>Tracker class can be used to track the objects in a video. Please check the [tracker.py](tracker.py) for more details.</summary>
+
+```bash
+from tracker import Tracker
+tracker = Tracker(tracker_type = 'sort')
+dets = np.array([[0,0,10,10,0.9,1],[0,0,10,10,0.8,1],[0,0,10,10,0.7,1], ....])
+tracking_results = tracker(dets)
+print(tracking_results)
+```
+
+<summary>MuliCameraTracker class can be used to track the objects in a video. Please check the [tracker.py](tracker.py) for more details.</summary>
+
+```bash
+from tracker import MuliCameraTracker
+track_id = {0, 1} # set of camera ids
+tracker = MuliCameraTracker(tracker_type = 'sort', track_id = track_id )
+dets = {0: np.array([[0,0,10,10,0.9,1],[0,0,10,10,0.8,1],[0,0,10,10,0.7,1], ....]), 
+        1: np.array([[0,0,10,10,0.9,1],[0,0,10,10,0.8,1],[0,0,10,10,0.7,1], ....])} # dictionary of camera id and detections
+tracking_results = tracker(dets) # dictionary of camera id and tracking results
+print(tracking_results[0]) # tracking results of camera id 0
+```
+
 </details>
