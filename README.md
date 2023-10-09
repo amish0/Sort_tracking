@@ -24,7 +24,8 @@ pip install -r requirements.txt
 
 <details open>
 <summary>Usage</summary>
-<summary>Sort tracking can be used as a standalone tracker.</summary>
+<details open>
+1. Sort tracking can be used as a standalone tracker. Please check the [Sort_cls.py](Sort_cls.py) for more details.
 
 ```bash
 from Sort_cls import Sort
@@ -34,8 +35,10 @@ dets = np.array([[0,0,10,10,0.9,1],[0,0,10,10,0.8,1],[0,0,10,10,0.7,1], ....])
 tracking_results = obj_tracker.update(dets)
 print(tracking_results)
 ```
+</details>
 
-<summary>Tracker class can be used to track the objects in a video. Please check the [tracker.py](tracker.py) for more details.</summary>
+<details open>
+1. Tracker class can be used to track the objects in a video. Please check the [tracker.py](tracker.py) for more details.
 
 ```bash
 from tracker import Tracker
@@ -44,8 +47,10 @@ dets = np.array([[0,0,10,10,0.9,1],[0,0,10,10,0.8,1],[0,0,10,10,0.7,1], ....])
 tracking_results = tracker(dets)
 print(tracking_results)
 ```
+</details>
 
-<summary>MuliCameraTracker class can be used to track the objects in a video. Please check the [tracker.py](tracker.py) for more details.</summary>
+<details open>
+2. MuliCameraTracker class can be used to track the objects in a video. Please check the [tracker.py](tracker.py) for more details.
 
 ```bash
 from tracker import MuliCameraTracker
@@ -56,5 +61,5 @@ dets = {0: np.array([[0,0,10,10,0.9,1],[0,0,10,10,0.8,1],[0,0,10,10,0.7,1], ....
 tracking_results = tracker(dets) # dictionary of camera id and tracking results
 print(tracking_results[0]) # tracking results of camera id 0
 ```
-
+</details>
 </details>
