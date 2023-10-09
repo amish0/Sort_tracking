@@ -202,9 +202,8 @@ class Sort(object):
 
   def update(self, dets=np.empty((0, 6))):
     """
-    Params:
-      dets - a numpy array of detections in the format [[x1,y1,x2,y2,score, cls],[x1,y1,x2,y2,score, cls],...]
-    Requires: this method must be called once for each frame even with empty detections (use np.empty((0, 6)) for frames without detections).
+    dets - a numpy array of detections in the format [[x1,y1,x2,y2,score, cls],[x1,y1,x2,y2,score, cls],...]
+    Requires: this method must be called once for each frame even with empty detections (use np.empty((0, 7)) for frames without detections).
     Returns the a similar array, where the last column is the object ID. [[x1,y1,x2,y2,score, cls, ID],[x1,y1,x2,y2,score, cls, ID],...]
 
     NOTE: The number of objects returned may differ from the number of detections provided.
