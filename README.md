@@ -83,7 +83,7 @@ print(tracking_results[0]) # tracking results of camera id 0
 
 - `MuliCameraTracker`:  This class will initialize the tracker with the given tracker_type, and a set of tracker id (each tracker id will be associated with each camera) and tracker parameters from [corresponding yaml](sort.yaml) file. __call__ will take the detections and return the tracking results. Please check the [tracker.py](tracker.py) for more details.
     - arguments:
-        - dets - a dictionary of camera id and detections in the format $${\text{camera_id_1}: [[x1,y1,x2,y2,score, cls],[x1,y1,x2,y2,score, cls],...], \text{camera_id_2}: [[x1,y1,x2,y2,score, cls],[x1,y1,x2,y2,score, cls],...],...}$$
+        - dets - a dictionary of camera id and detections in the format $${\text{camera\_id\_1}: [[x1,y1,x2,y2,score, cls],[x1,y1,x2,y2,score, cls],...], \text{camera\_id\_2}: [[x1,y1,x2,y2,score, cls],[x1,y1,x2,y2,score, cls],...],...}$$
         - track_id - a set of camera ids/tracker_id to be tracked $${camera\_id\_1, camera\_id\_2, ...}$$
     - returns:
         - Requires: this method must be called once for each frame even with empty detections (use np.empty((0, 7)) for frames without detections).
