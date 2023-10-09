@@ -24,42 +24,43 @@ pip install -r requirements.txt
 
 <details open>
 <summary>Usage</summary>
-<details open>
-<summary>Sort tracking can be used as a standalone tracker.</summary> Please check the [Sort_cls.py](Sort_cls.py) for more details.
+    <details open>
+    <summary>Sort tracking can be used as a standalone tracker.</summary> Please check the [Sort_cls.py](Sort_cls.py) for more details.
 
-```bash
-from Sort_cls import Sort
-obj_tracker = Sort(max_age=1, min_hits=3, iou_threshold=0.3)
-dets = np.array([[0,0,10,10,0.9,1],[0,0,10,10,0.8,1],[0,0,10,10,0.7,1], ....]) 
-# dets = np.empty((0, 7)) # for empty detections
-tracking_results = obj_tracker.update(dets)
-print(tracking_results)
-```
-</details>
+        ```bash
+        from Sort_cls import Sort
+        obj_tracker = Sort(max_age=1, min_hits=3, iou_threshold=0.3)
+        dets = np.array([[0,0,10,10,0.9,1],[0,0,10,10,0.8,1],[0,0,10,10,0.7,1], ....]) 
+        # dets = np.empty((0, 7)) # for empty detections
+        tracking_results = obj_tracker.update(dets)
+        print(tracking_results)
+        ```
+    </details>
 
-<details open>
-<summary>Tracker class can be used to track the objects in a video.</summary> Please check the [tracker.py](tracker.py) for more details.
+    <details open>
+    <summary>Tracker class can be used to track the objects in a video.</summary> Please check the [tracker.py](tracker.py) for more details.
 
-```bash
-from tracker import Tracker
-tracker = Tracker(tracker_type = 'sort')
-dets = np.array([[0,0,10,10,0.9,1],[0,0,10,10,0.8,1],[0,0,10,10,0.7,1], ....])
-tracking_results = tracker(dets)
-print(tracking_results)
-```
-</details>
+    ```bash
+    from tracker import Tracker
+    tracker = Tracker(tracker_type = 'sort')
+    dets = np.array([[0,0,10,10,0.9,1],[0,0,10,10,0.8,1],[0,0,10,10,0.7,1], ....])
+    tracking_results = tracker(dets)
+    print(tracking_results)
+    ```
+    </details>
 
-<details open>
-<summary>MuliCameraTracker class can be used to track the objects in a video.</summary> Please check the [tracker.py](tracker.py) for more details.
+    <details open>
+    <summary>MuliCameraTracker class can be used to track the objects in a video.</summary> Please check the [tracker.py](tracker.py) for more details.
 
-```bash
-from tracker import MuliCameraTracker
-track_id = {0, 1} # set of camera ids
-tracker = MuliCameraTracker(tracker_type = 'sort', track_id = track_id )
-dets = {0: np.array([[0,0,10,10,0.9,1],[0,0,10,10,0.8,1],[0,0,10,10,0.7,1], ....]), 
-        1: np.array([[0,0,10,10,0.9,1],[0,0,10,10,0.8,1],[0,0,10,10,0.7,1], ....])} # dictionary of camera id and detections
-tracking_results = tracker(dets) # dictionary of camera id and tracking results
-print(tracking_results[0]) # tracking results of camera id 0
-```
-</details>
+    ```bash
+    from tracker import MuliCameraTracker
+    track_id = {0, 1} # set of camera ids
+    tracker = MuliCameraTracker(tracker_type = 'sort', track_id = track_id )
+    dets = {0: np.array([[0,0,10,10,0.9,1],[0,0,10,10,0.8,1],[0,0,10,10,0.7,1], ....]), 
+            1: np.array([[0,0,10,10,0.9,1],[0,0,10,10,0.8,1],[0,0,10,10,0.7,1], ....])} # dictionary of camera id and detections
+    tracking_results = tracker(dets) # dictionary of camera id and tracking results
+    print(tracking_results[0]) # tracking results of camera id 0
+    ```
+    </details>
+    
 </details>
