@@ -53,7 +53,10 @@ class Tracker:
 
 class MuliCameraTracker:
     """@brief MultiCameraTracker class
-       @details This class is used to create and configure logger instances with different settings."""
+       @details his class will initialize the tracker with the given tracker_type,
+       and a set of tracker id (each tracker id will be associated with each camera) 
+       and tracker parameters from `yaml` file.
+       """
 
     def __init__(self, tracker_type, tracker_id: set = None) -> None:
         if isinstance(tracker_type, str) and tracker_type in tracker_map.keys():
