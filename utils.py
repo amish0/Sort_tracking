@@ -1,29 +1,52 @@
 from pathlib import Path
+import os
 
-def check_suffix(file='yolov8n.pt', suffix='.pt', msg=''):
-    """Check file for acceptable suffix."""
-    # check suffix is empty or not
-    if suffix and file:
-        # check suffix is string or not
-        if isinstance(suffix, str) and isinstance(file, str):
-            # check file ends with suffix or not
-            return file.endswith(suffix)
+def check_file(file, suffix=''):
+    """
+    @brief check file is valid or not
+    @param file file path
+    @param suffix file suffix
+    @return file path if file is valid else empty string
+    """
+    if check_suffix(file, suffix):  # optional
+        file = str(file)  # convert to str()
+        if os.path.isfile(file) or not file:  # exists
+            return file
         else:
-            print(f'{msg}suffix and file must be string')
-            return False
+            print('File Not Found: %s' % file)
+            return ''
     else:
-        print(f'{msg}suffix and file must not be empty')
-        return False
-        
-
-def check_file(file='yolov8n.pt'):
-    if file:
+        print('File suffix doesnot match: %s' % file)
+        return ''
+    
+def check_suffix(file: str='sort.yaml', suffix: str='.yaml', msg=''):
+    """
+    @brief check file suffix
+    @param file file path
+    @param suffix file suffix
+    @param msg message to be printed
+    @return True if suffix matches else False
+    """
+    if file and suffix:
+        if isinstance(suffix, str):
+            suffix = [suffix]
+        else:
+            print('suffix must be string')
+            return False
+        # check file is string or windowsPath
+        if isinstance(file, Path):
+            file = str(file)
         if isinstance(file, str):
-            # check file exists or not
-            return Path(file).exists()
+            s = Path(file).suffix.lower()  # file suffix
+            if s in suffix:
+                return True
+            else:
+                print('suffix: {}'.format(s))
+                print('suffix acceptable: {}'.format(suffix))
+                return False
         else:
             print('file must be string')
             return False
     else:
-        print('file must not be empty')
+        print('file and suffix must be string')
         return False
