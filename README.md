@@ -24,15 +24,14 @@ pip install -r requirements.txt
 
 <details open>
 <summary>Usage</summary>
-    <details Sort>
-    <summary>Sort</summary>
+- Sort tracking can be used with the following command
 
-    ```bash
-    from Sort_cls import Sort
-    obj_tracker = Sort(max_age=1, min_hits=3, iou_threshold=0.3)
-    dets = np.array([[0,0,10,10,0.9,1],[0,0,10,10,0.8,1],[0,0,10,10,0.7,1],[0,0,10,10,0.6,1],[0,0,10,10,0.5,1]])
-    track_res = obj_tracker.update(dets)
-    print(track_res)
-    ```
-    </details>
+```bash
+from Sort_cls import Sort
+obj_tracker = Sort(max_age=1, min_hits=3, iou_threshold=0.3)
+dets = np.array([[0,0,10,10,0.9,1],[0,0,10,10,0.8,1],[0,0,10,10,0.7,1], ....]) 
+# dets = np.empty((0, 7)) # for empty detections
+tracking_results = obj_tracker.update(dets)
+print(tracking_results)
+```
 </details>
