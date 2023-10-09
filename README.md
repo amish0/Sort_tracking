@@ -66,21 +66,21 @@ print(tracking_results[0]) # tracking results of camera id 0
 
 <details open>
 <summary>Class Explanation</summary>
-1. sort: The class of the sort tracking. It will be initialized with `max_age`, `min_hits`, `iou_threshold` based on arguments. `update` method will with the detections parameters and return the tracking results. Please check the [sort_cls.py](sort_cls) for more details.
+- `sort`: The class of the sort tracking. It will be initialized with `max_age`, `min_hits`, `iou_threshold` based on arguments. `update` method will with the detections parameters and return the tracking results. Please check the [sort_cls.py](sort_cls) for more details.
     - arguments:
         - dets - a numpy array of detections in the format [[x1,y1,x2,y2,score, cls],[x1,y1,x2,y2,score, cls],...]
     - returns:
         - Requires: this method must be called once for each frame even with empty detections (use np.empty((0, 7)) for frames without detections).
         - Returns the a similar array, where the last column is the object ID. [[x1,y1,x2,y2,score, cls, ID],[x1,y1,x2,y2,score, cls, ID],...]
 
-Tracker: This class will initialize the tracker with the given tracker_type and tracker parameters from [corresponding yaml](sort.yaml) file. __call__ will take the detections and return the tracking results. Please check the [tracker.py](tracker.py) for more details.
+- `Tracker`: This class will initialize the tracker with the given tracker_type and tracker parameters from [corresponding yaml](sort.yaml) file. __call__ will take the detections and return the tracking results. Please check the [tracker.py](tracker.py) for more details.
     - arguments:
         - dets - a numpy array of detections in the format [[x1,y1,x2,y2,score, cls],[x1,y1,x2,y2,score, cls],...]
     - returns:
         - Requires: this method must be called once for each frame even with empty detections (use np.empty((0, 7)) for frames without detections).
         - Returns the a similar array, where the last column is the object ID. [[x1,y1,x2,y2,score, cls, ID],[x1,y1,x2,y2,score, cls, ID],...]
 
-MuliCameraTracker:  This class will initialize the tracker with the given tracker_type, and a set of tracker id (each tracker id will be associated with each camera) and tracker parameters from [corresponding yaml](sort.yaml) file. __call__ will take the detections and return the tracking results. Please check the [tracker.py](tracker.py) for more details.
+- `MuliCameraTracker`:  This class will initialize the tracker with the given tracker_type, and a set of tracker id (each tracker id will be associated with each camera) and tracker parameters from [corresponding yaml](sort.yaml) file. __call__ will take the detections and return the tracking results. Please check the [tracker.py](tracker.py) for more details.
     - arguments:
         - dets - a dictionary of camera id and detections in the format {camera_id: [[x1,y1,x2,y2,score, cls],[x1,y1,x2,y2,score, cls],...], camera_id: [[x1,y1,x2,y2,score, cls],[x1,y1,x2,y2,score, cls],...],...}
         - track_id - a set of camera ids/tracker_id
