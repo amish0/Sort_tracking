@@ -11,7 +11,8 @@ The modified version of sort tracking (https://github.com/abewley/sort) compatib
 - [loadyaml.py](loadyaml.py): contains the function `loadyaml()`: for loading the yaml file
 - [tracker.py](tracker.py): main tracking file. It will load the sort_cls.py and use the update method to get the tracking results. please check class `Tracker` and `MuliCameraTracker` for more details.
 
-<details open>
+## Installation
+<details close>
 <summary>Install</summary>
 Clone repo and install [requirements.txt](requirements.txt)
 
@@ -22,17 +23,27 @@ pip install -r requirements.txt
 ```
 </details>
 
-<details open>
+## Example
+<details close>
 <summary>Example</summary>
 <details close>
 <summary>Sort tracking can be used as a standalone tracker.</summary> Please check the [Sort_cls.py](Sort_cls.py) for more details.
 
 ```bash
+
+# import Sort
 from Sort_cls import Sort
+
+# Create an instance of the tracker
 obj_tracker = Sort(max_age=1, min_hits=3, iou_threshold=0.3)
+
+# get detections
 dets = np.array([[0,0,10,10,0.9,1],[0,0,10,10,0.8,1],[0,0,10,10,0.7,1], ....]) 
-# dets = np.empty((0, 7)) # for empty detections
+
+# update tracker
 tracking_results = obj_tracker.update(dets)
+
+# print tracking results
 print(tracking_results)
 ```
 </details>
@@ -41,10 +52,19 @@ print(tracking_results)
 <summary>Tracker class can be used to track the objects in a video.</summary> Please check the [tracker.py](tracker.py) for more details.
 
 ```bash
+# import tracker
 from tracker import Tracker
+
+# Create an instance of tracker
 tracker = Tracker(tracker_type = 'sort')
+
+# detections result from object detector
 dets = np.array([[0,0,10,10,0.9,1],[0,0,10,10,0.8,1],[0,0,10,10,0.7,1], ....])
+
+# update tracker
 tracking_results = tracker(dets)
+
+# print tracking results
 print(tracking_results)
 ```
 </details>
@@ -53,12 +73,23 @@ print(tracking_results)
 <summary>MuliCameraTracker class can be used to track the objects in a video.</summary> Please check the [tracker.py](tracker.py) for more details.
 
 ```bash
+# import multi camera tracker
 from tracker import MuliCameraTracker
+
+# set of tracker id
 track_id = {0, 1} # set of camera ids
+
+# Create an instance of tracker
 tracker = MuliCameraTracker(tracker_type = 'sort', track_id = track_id )
+
+# detections result from each camera by a object detector
 dets = {0: np.array([[0,0,10,10,0.9,1],[0,0,10,10,0.8,1],[0,0,10,10,0.7,1], ....]), 
-        1: np.array([[0,0,10,10,0.9,1],[0,0,10,10,0.8,1],[0,0,10,10,0.7,1], ....])} # dictionary of camera id and detections
-tracking_results = tracker(dets) # dictionary of camera id and tracking results
+        1: np.array([[0,0,10,10,0.9,1],[0,0,10,10,0.8,1],[0,0,10,10,0.7,1], ....])}
+
+# update tracker
+tracking_results = tracker(dets)
+
+# print tracking results of camera id 0
 print(tracking_results[0]) # tracking results of camera id 0
 ```
 </details>
@@ -89,6 +120,23 @@ print(tracking_results[0]) # tracking results of camera id 0
         - Requires: this method must be called once for each frame even with empty detections (use np.`empty((0, 7))` for frames without detections).
         - Returns the a dictionary of camera id and tracking results. `{camera\_id\_1: [[x1,y1,x2,y2,score, cls, ID],[x1,y1,x2,y2,score, cls, ID],...], camera\_id\_2: [[x1,y1,x2,y2,score, cls, ID],[x1,y1,x2,y2,score, cls, ID],...],...}$`
 </details>
+
+## Use in your own peoject
+Below is the gist of how to instantiate and update the tracker. Please check the [tracker.py](tracker.py) for more details.
+```bash
+
+from tracker import Tracker
+# Create an instance of tracker
+tracker = Tracker(tracker_type = 'sort')
+# get detections
+...
+
+# update SORT
+track_bbs_ids = tracker.update(detections)
+
+# track_bbs_ids is a np array where each row contains a valid bounding box, score, class and track_id (last column)
+...
+```
 
 <details open>
 <summary>References</summary>
