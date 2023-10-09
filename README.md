@@ -24,7 +24,7 @@ pip install -r requirements.txt
 
 <details open>
 <summary>Example</summary>
-<details open>
+<details close>
 <summary>Sort tracking can be used as a standalone tracker.</summary> Please check the [Sort_cls.py](Sort_cls.py) for more details.
 
 ```bash
@@ -37,7 +37,7 @@ print(tracking_results)
 ```
 </details>
 
-<details open>
+<details close>
 <summary>Tracker class can be used to track the objects in a video.</summary> Please check the [tracker.py](tracker.py) for more details.
 
 ```bash
@@ -49,7 +49,7 @@ print(tracking_results)
 ```
 </details>
 
-<details open>
+<details close>
 <summary>MuliCameraTracker class can be used to track the objects in a video.</summary> Please check the [tracker.py](tracker.py) for more details.
 
 ```bash
@@ -64,30 +64,30 @@ print(tracking_results[0]) # tracking results of camera id 0
 </details>
 </details>
 
-<details open>
+<details close>
 <summary>Class Explanation</summary>
 
 - `sort`: The class of the sort tracking. It will be initialized with `max_age`, `min_hits`, `iou_threshold` based on arguments. `update` method will with the detections parameters and return the tracking results. Please check the [sort_cls.py](sort_cls) for more details.
     - arguments:
-        - dets - a numpy array of detections in the format $$[[x1,y1,x2,y2,score, cls],[x1,y1,x2,y2,score, cls],...]$$
+        - dets - a numpy array of detections in the format `[[x1,y1,x2,y2,score, cls],[x1,y1,x2,y2,score, cls],...]`
     - returns:
-        - Requires: this method must be called once for each frame even with empty detections (use np.$$empty((0, 7))$$ for frames without detections).
-        - Returns the a similar array, where the last column is the object ID. $$[[x1,y1,x2,y2,score, cls, ID],[x1,y1,x2,y2,score, cls, ID],...]$$
+        - Requires: this method must be called once for each frame even with empty detections (use np.`empty((0, 7))` for frames without detections).
+        - Returns the a similar array, where the last column is the object ID. `[[x1,y1,x2,y2,score, cls, ID],[x1,y1,x2,y2,score, cls, ID],...]`
 
 - `Tracker`: This class will initialize the tracker with the given tracker_type and tracker parameters from [corresponding yaml](sort.yaml) file. __call__ will take the detections and return the tracking results. Please check the [tracker.py](tracker.py) for more details.
     - arguments:
-        - dets - a numpy array of detections in the format $$[[x1,y1,x2,y2,score, cls],[x1,y1,x2,y2,score, cls],...]$$
+        - dets - a numpy array of detections in the format `[[x1,y1,x2,y2,score, cls],[x1,y1,x2,y2,score, cls],...]`
     - returns:
-        - Requires: this method must be called once for each frame even with empty detections (use np.empty((0, 7)) for frames without detections).
-        - Returns the a similar array, where the last column is the object ID. $$[[x1,y1,x2,y2,score, cls, ID],[x1,y1,x2,y2,score, cls, ID],...]$$
+        - Requires: this method must be called once for each frame even with empty detections (use np.`empty((0, 7))` for frames without detections).
+        - Returns the a similar array, where the last column is the object ID. `[[x1,y1,x2,y2,score, cls, ID],[x1,y1,x2,y2,score, cls, ID],...]`
 
 - `MuliCameraTracker`:  This class will initialize the tracker with the given tracker_type, and a set of tracker id (each tracker id will be associated with each camera) and tracker parameters from [corresponding yaml](sort.yaml) file. __call__ will take the detections and return the tracking results. Please check the [tracker.py](tracker.py) for more details.
     - arguments:
-        - dets - a dictionary of camera id and detections in the format $${\text{camera\_id\_1}: [[x1,y1,x2,y2,score, cls],[x1,y1,x2,y2,score, cls],...], \text{camera\_id\_2}: [[x1,y1,x2,y2,score, cls],[x1,y1,x2,y2,score, cls],...],...}$$
-        - track_id - a set of camera ids/tracker_id to be tracked $${camera\_id\_1, camera\_id\_2, ...}$$
+        - dets - a dictionary of camera id and detections in the format `{camera\_id\_1: [[x1,y1,x2,y2,score, cls],[x1,y1,x2,y2,score, cls],...], camera_id_2: [[x1,y1,x2,y2,score, cls],[x1,y1,x2,y2,score, cls],...],...}`
+        - track_id - a set of camera ids/tracker_id to be tracked `{camera\_id\_1, camera\_id\_2, ...}`
     - returns:
-        - Requires: this method must be called once for each frame even with empty detections (use np.empty((0, 7)) for frames without detections).
-        - Returns the a dictionary of camera id and tracking results. $${\text{camera_id_1}: [[x1,y1,x2,y2,score, cls, ID],[x1,y1,x2,y2,score, cls, ID],...], \text{camera_id_2}: [[x1,y1,x2,y2,score, cls, ID],[x1,y1,x2,y2,score, cls, ID],...],...}$$
+        - Requires: this method must be called once for each frame even with empty detections (use np.`empty((0, 7))` for frames without detections).
+        - Returns the a dictionary of camera id and tracking results. `{camera\_id\_1: [[x1,y1,x2,y2,score, cls, ID],[x1,y1,x2,y2,score, cls, ID],...], camera\_id\_2: [[x1,y1,x2,y2,score, cls, ID],[x1,y1,x2,y2,score, cls, ID],...],...}$`
 </details>
 
 <details open>
