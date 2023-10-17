@@ -1,5 +1,5 @@
-PyYAML
 numpy
+PyYAML
 filterpy
 scikit-image
-lap
+lapx
