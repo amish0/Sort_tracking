@@ -2,3 +2,4 @@ filterpy
 scikit-image
 lap
 PyYAML
+numpy
