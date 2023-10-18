@@ -2,7 +2,7 @@ name: run main.py
 
 on:
   push:
-  branches: ["main"]
+    branches: ["main"]
 
 jobs:
   build:
