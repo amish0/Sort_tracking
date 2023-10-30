@@ -9,11 +9,11 @@ setup(
     url='https://github.com/amish0/Sort_tracking',
     packages=find_packages(),
     install_requires=[
-        numpy==1.26.0,
-        PyYAML==6.0.1,
-        filterpy==1.4.4,
-        scikit-image==0.20.0,
-        lapx==0.5.5,
+        'numpy==1.26',
+        'PyYAML==6.0.1',
+        'filterpy==1.4.4',
+        'scikit-image==0.20.0',
+        'lapx==0.5.5',
     ],
     classifiers=[
         'Intended Audience :: Developers',
