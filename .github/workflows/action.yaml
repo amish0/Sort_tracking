@@ -63,11 +63,11 @@ jobs:
       run: |
           python setup.py sdist bdist_wheel
           mkdir -p dist
-          mv dist/*.whl dist/
+          # mv dist/*.whl dist/
     - name: Store Wheel on GitHub
       uses: actions/upload-artifact@v3
       with:
         name: wheel
-        path: ./dist/
+        path: dist/*.whl
     - name: Publish package
       run: echo "Not publishing package"
