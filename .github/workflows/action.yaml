@@ -30,6 +30,14 @@ jobs:
       
       - name: Display Python Version
         run: python --version
+      
+      - name: Display System info
+        run: |
+          echo "System info"
+          echo "-----------"
+          echo "OS: ${{matrix.os}}"
+          echo "Python Version: ${{matrix.python-version}}"
+          echo "-----------"
           
       - name: execute py script # run main.py
         run: python tracker.py
@@ -48,7 +56,18 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install build
+        pip install setuptools wheel twine
     - name: Build package
       run: python -m build
+    - name: Build wheels
+      run: |
+          python setup.py sdist bdist_wheel
+          mkdir -p dist
+          mv dist/*.whl dist/*.tar.gz dist/*.zip
+    - name: Store Wheel on GitHub
+      uses: actions/upload-artifact@v3
+      with:
+        name: wheel
+        path: dist/*.whl
     - name: Publish package
       run: echo "Not publishing package"
