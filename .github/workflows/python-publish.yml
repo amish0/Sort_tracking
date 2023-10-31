@@ -38,4 +38,4 @@ jobs:
     - name: Build package
       run: python -m build
     - name: Publish package
-      run: echo "Not publishing package ${{job.deploy.runs-on}}"
+      run: echo "Not publishing package"
