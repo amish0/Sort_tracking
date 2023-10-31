@@ -62,12 +62,11 @@ jobs:
     - name: Build wheels
       run: |
           python setup.py sdist bdist_wheel
-          mkdir -p dist
           # mv dist/*.whl dist/
     - name: Store Wheel on GitHub
       uses: actions/upload-artifact@v3
       with:
         name: wheel
-        path: dist/*.whl
+        path: dist
     - name: Publish package
       run: echo "Not publishing package"
