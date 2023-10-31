@@ -65,11 +65,7 @@ jobs:
       run: python -m build
     - name: Build wheels
       run: |
-          # python setup.py sdist bdist_wheel
-          # assign module name
-          python setup.py sdist bdist_wheel --name {dist}-{version}(-{build})?-{python}-{platform}.whl
-          
-          # mv dist/*.whl dist/
+          python setup.py sdist bdist_wheel
     - name: Store Wheel on GitHub
       uses: actions/upload-artifact@v3
       with:
