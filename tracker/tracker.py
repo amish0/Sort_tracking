@@ -5,8 +5,8 @@ from pathlib import Path
 FILE = Path(__file__).resolve()
 ROOT = FILE.parents[0]  # YOLOv5 root directory
 
-from Sort_cls import Sort
-from loadyaml import load_yaml
+from tracker.Sort.Sort import Sort
+from tracker.utils.loadyaml import load_yaml
 
 tracker_map = {
     'sort': Sort
@@ -21,7 +21,10 @@ class Tracker:
            @param tracker_type type of tracker to be used
         """
         if isinstance(tracker_type, str) and tracker_type in tracker_map.keys():
-            self.parm = load_yaml(ROOT / "sort.yaml")
+            self.parm = load_yaml(ROOT / "cfg/sort.yaml")
+            if self.parm is None:
+                self.parm = {'max_age': 1, 'min_hits': 3, 'iou_threshold': 0.3}
+                print("sort.yaml not found, using default parameters")
             self.tracker = tracker_map[tracker_type](**self.parm)
         else:
             print("tracker_type must be string and in {}".format(tracker_map.keys()))

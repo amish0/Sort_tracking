@@ -1,7 +1,7 @@
 import yaml
 import os
 from pathlib import Path
-from utils import check_file
+from tracker.utils.utils import check_file
 
 def load_yaml(file='yolov8n.yaml'):
     """@brief load yaml file
