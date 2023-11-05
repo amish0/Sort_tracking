@@ -138,6 +138,34 @@ track_bbs_conf_cls_ids = tracker(detections)
 ...
 ```
 
+## Build setup
+```
+# Go to code directory
+cd some_root_dir
+
+# create build
+
+python -m build
+# or
+# python setup.py sdist bdist_wheel
+```
+It will create build in your dist directory. if dist is not present it will create it.
+
+## Install Packages
+ 
+ if you have not made any build, please follow the command
+
+ ```
+ python setup.py install
+ ```
+
+ If build has been created, please follow the instruction below
+ ```
+ cd dist
+ pip install package_name*.whl
+ ```
+ Please replace "package_name*.whl" with .whl file present in dist directory
+
 <details open>
 <summary>References</summary>
 SORT: https://github.com/abewley/sort
